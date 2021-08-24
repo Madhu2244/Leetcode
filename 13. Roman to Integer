@@ -1,0 +1,33 @@
+class Solution(object):
+    def romanToInt(self, s):
+        romanToNum ={
+                        'I': 1,
+                        'V': 5,
+                        'X': 10,
+                        'L': 50,
+                        'C': 100,
+                        'D': 500,
+                        'M': 1000,
+                        'IV': 4,
+                        'IX': 9,
+                        'XL': 40,
+                        'XC': 90,
+                        'CD': 400,
+                        'CM': 900
+                    }
+        sum = 0
+        x = 0
+        while x < len(s):
+            print(x)
+            if x == len(s)-1:
+                sum = sum + romanToNum.get(s[x])
+            else:
+                checkDouble = s[x:x+2]
+                if romanToNum.has_key(checkDouble):
+                    sum = sum + romanToNum.get(checkDouble)
+                    x = x + 1
+                else:
+                    sum = sum + romanToNum.get(s[x])
+            x = x + 1
+        return sum
+        
