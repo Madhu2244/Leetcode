@@ -1,10 +1,10 @@
-```
+"""
 stack
 
 if its ( { [, add to stack
 if its ) } ], pop stack, check if its matching with the opposite type of parenthesis, if its not return false, else continue
 return true
-```
+"""
 
 class Solution(object):
     def isValid(self, s):
