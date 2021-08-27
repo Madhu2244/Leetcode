@@ -72,25 +72,15 @@ class Solution(object):
             return 0
         #using i to loop through array
         i = 1
-        k = 0 # k is counter of removed duplicates
         prevnum = nums[0]
         while i < len(nums):
             if nums[i] == prevnum:
-                nums[i] = None
-                k = k + 1
+                nums[i:] = nums[i+1:]
+                i = i -1
             else:
                 prevnum = nums[i]
             i = i + 1
-        i = 1
-        while i < len(nums):
-            if nums[i] == None:
-                nums[i:] = nums[(i+1):]
-                i = i - 1
-            i = i + 1
         print(nums)
-        return k
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+        return len(nums)
+        
         
