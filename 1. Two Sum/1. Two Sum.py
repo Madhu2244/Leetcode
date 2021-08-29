@@ -26,3 +26,15 @@ class Solution:
                     break
                           
         return result
+"""
+ ab
+
+initially set both a pointer and b pointer to home
+if: increasing b pointer increases the sum, go ahead
+else: if: increasing b pointer makes the sum go below 0:
+        if a pointer == b pointer
+            increase both a pointer and b pointer
+        else
+            increase just a pointer
+      else: increase b pointer
+"""
