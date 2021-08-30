@@ -1,18 +1,17 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        remainder = (digits[len(digits)-1] + 1) // 10
-        digits[len(digits)-1] = (digits[len(digits)-1] + 1) % 10
-        if remainder == 0:
-            return digits
-        #print(digits, remainder)
-        for i in range (len(digits)-2,-1,-1):
-            if remainder == 0:
-                return digits
-            remainder = (digits[i] + 1) // 10
-            digits[i] = (digits[i] + 1) % 10
-        if remainder == 0:
-            return digits
-        return [1] + digits
+        digits.reverse()
+        carry = 0
+        for i in range(len(digits)):
+            digits[i] = digits[i] + 1
+            if digits[i] % 10 == 0:
+                digits[i] = 0
+                if i == len(digits) - 1:
+                    digits.append(1)
+            else:
+                break
+        digits.reverse()
+        return digits
 
 """
 [1,2,3]
