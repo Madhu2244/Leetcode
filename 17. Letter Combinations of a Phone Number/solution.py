@@ -13,33 +13,15 @@ class Solution:
             8: ['t','u','v'],
             9: ['w','x','y','z']
         }
-        letters = []
-        for num in arr:
-            letters.append(d[num])
-        output = []
-        index = [0 for i in range(len(digits))]
-        print(letters,index)
-        while True:
-            result = ''
-            
-            for i,lists in enumerate(letters):
-                result += lists[index[i]]
-            output.append(result)
-            index[-1] += 1
-            
-            while True:
-                flag = False
-                for i in range(1,len(index)+1):
-                    print(i,index[-i], len(letters[-i]))
-                    if index[-i] >= len(letters[-i]):
-                        index[-i] = 0
-                        if i == len(index):
-                            return output
-                        else:
-                            index[-i-1] += 1
-                    else:
-                        flag = True
-                        break
-                if flag:
-                    break
+        result = []
+        def backtrack(self, i: int, curStr: str):
+            if len(curStr) == len(digits):
+                result.append(curStr)
+                return
+            else:
+                for k in d[int(digits[i])]:
+                    backtrack(self,i+1,curStr + k)
+        backtrack(self,0,'')
+        return result
+        
             
