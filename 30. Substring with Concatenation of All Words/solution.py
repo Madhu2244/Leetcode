@@ -1,3 +1,4 @@
+#time complexity is O(n!) * O(n^2) worst case, otherwise O(n!) * O(n) best case
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         words_combinations = []
