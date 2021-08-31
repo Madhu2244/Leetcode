@@ -1,16 +1,14 @@
 import math
 class Solution:
     def myAtoi(self, s: str) -> int:
-        s = s.strip()
-        print(s)
+        #1. remove whitespace
+        s = s.strip() 
+        #2. check if length is 0
         if len(s) == 0:
             return 0
+        #2. check if positive or negative
         positive = False if s[0] == '-' else True
-        if len(s) >= 2:
-            bothSigns = True if (s[0] == '-' or s[0] == '+') and (s[1] == '-' or s[1] == '+') else False
-            if bothSigns:
-                return 0
-        print(positive)
+        #3. building the number
         num = ''
         for i,n in enumerate(s):
             if i == 0 and (n == '-' or n == '+'):
@@ -19,17 +17,18 @@ class Solution:
                 num += n
             else:
                 break
-        print(num)
+        #4 converting to an int
         if len(num) == 0:
             num = int(0)
         num = int(num)
-        print(num)
+        #5 checking if its 32 bit range
+        exponent_number = 2147483648
         if not positive:
-            if (num >= math.pow(2,31)):
-                return int(math.pow(-2,31))
+            if (num >= exponent_number):
+                return -exponent_number
             else:
-                return -int(num)
-        if (num > math.pow(2,31)-1):
-            return int(math.pow(2,31) - 1)
-        return int(num)
+                return -num
+        if (num > exponent_number-1):
+            return exponent_number-1
+        return num
         
