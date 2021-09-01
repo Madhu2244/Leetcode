@@ -1,0 +1,6 @@
+#loop from i = 0, to i = length
+        #check from indexes i to i+len(words[0]) and save it as temp
+        #check if temp is in words
+        #if temp is in words, remove temp from words
+        #check the next len(words[0]) indexes, and repeat the same statements, if its not in words, reset words
+        #basecase: words.length == 0
