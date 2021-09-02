@@ -1,23 +1,17 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
         result = []
-        result_dict = []
-        def recurse(total: int,result_array: List[int], dictionary_values: dict):
+        def recurse(total: int,result_array: List[int]):
             if total == target:
-                if dictionary_values in result_dict:
-                    return
                 result.append(result_array)
-                result_dict.append(dictionary_values)
                 return
             for nums in candidates:
                 if total + nums > target:
+                    break
+                if nums < result_array[-1]:
                     continue
-                copy = dictionary_values.copy()
-                copy[nums] += 1
-                recurse(total+nums,result_array+[nums],copy)
-            
+                recurse(total+nums,result_array+[nums])
         for num in candidates:
-            dictionary_values = collections.defaultdict(int)
-            dictionary_values[num] +=1
-            recurse(num,[num],dictionary_values)
+            recurse(num,[num])
         return result
