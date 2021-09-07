@@ -9,19 +9,11 @@ class Solution:
         slowPointer = head
         if slowPointer == None:
             return False
-        if slowPointer.next == None:
-            return False
-        if slowPointer.next.next == None:
-            return False
-        fastPointer = head.next.next
+        fastPointer = head.next
         while slowPointer != fastPointer:
-            if fastPointer.next != None:
-                fastPointer = fastPointer.next
-                if fastPointer.next != None:
-                    fastPointer = fastPointer.next
-                    slowPointer = slowPointer.next
-                else:
-                    return False
+            if fastPointer != None and fastPointer.next != None:
+                fastPointer = fastPointer.next.next
+                slowPointer = slowPointer.next
             else:
                 return False
         if slowPointer == fastPointer:
