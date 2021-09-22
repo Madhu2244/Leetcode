@@ -1,20 +1,16 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        solution = [False] * len(nums)
-        solution[0] = True
-        i = 0
-        while i < len(nums):
-            if solution[len(nums)-1]:
+        i = len(nums) - 1
+        if i == 0:
+            return True
+        while True:
+            j = i - 1
+            while j >= 0:
+                if j + nums[j] >= i:
+                    i = j
+                    break
+                j -= 1
+            if j == 0:
                 return True
-            if solution[i] and i != len(nums)-1:
-                for j in range(nums[i]+1):
-                    if i + j >=len(nums):
-                        break
-                    solution[i+j] = True
-                #print(solution)
-                i += 1
-            else:
-                i += 1
-                continue
-        #print(solution)
-        return solution[len(nums)-1]
+            if j == -1:
+                return False
